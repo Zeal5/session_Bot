@@ -7,7 +7,7 @@ from discord.ext import commands , tasks
 
 load_dotenv()
 bot = commands.Bot(command_prefix='!',activity=discord.Activity(type=discord.ActivityType.watching, name="Markets"))
-a = [0,1,2,3,4,5]
+a = [0,1,2,3,4]
 @bot.event
 async def on_ready():
     print('We have logged in as ',bot.user)
