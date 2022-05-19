@@ -1,10 +1,11 @@
 import discord
+from dotenv import load_dotenv
+import os
 import time
 import datetime
 from discord.ext import commands , tasks
 
-TOKEN = "OTc0OTU4MTg0Mjk5MTE0NTE2.GuZ5kM.W06Q4Ond0Qhj4EuR0vDvNhJcwQQyChdg1DcEoU"
-
+load_dotenv()
 bot = commands.Bot(command_prefix='!',activity=discord.Activity(type=discord.ActivityType.watching, name="Markets"))
 a = [0,1,2,3,4,5]
 @bot.event
@@ -17,11 +18,9 @@ async def on_ready():
     London_start.start()
     Sydney_start.start()
     Sydney_end.start()
-
-    
-
+ 
 #sydney_session start
-@tasks.loop(days=1)
+@tasks.loop(hours=24)
 async def Sydney_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
         channel = bot.get_channel(974719903443603579)
@@ -34,7 +33,7 @@ async def Sydney_start():
         await channel.send(embed=ny_messag)
 
 #sydney_session end
-@tasks.loop(days=1)
+@tasks.loop(hours=24)
 async def Sydney_end():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
         print('sydney end')
@@ -48,7 +47,7 @@ async def Sydney_end():
         await channel.send(embed=ny_messag)
 
 #Tokyo_session_start message
-@tasks.loop(days=1)
+@tasks.loop(hours=24)
 async def Tokyo_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
         print('tokyo start')
@@ -62,7 +61,7 @@ async def Tokyo_start():
         await channel.send(embed=ny_messag)
 
 #London_session start
-@tasks.loop(days=1)
+@tasks.loop(hours=24)
 async def London_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
         print('london start')
@@ -77,7 +76,7 @@ async def London_start():
         await channel.send(embed=ny_messag)
 
 #London_session end
-@tasks.loop(days=1)
+@tasks.loop(hours=24)
 async def London_end():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
         print('london end')
@@ -90,10 +89,8 @@ async def London_end():
         ny_messag = discord.Embed(title= f' london-session has ended ',color=0x14AAF5)
         await channel.send(embed=ny_messag)
 
-
-
 #ny_session starting message
-@tasks.loop(minutes=5)
+@tasks.loop(hours=24)
 async def NY_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
         print('ny start')
@@ -107,7 +104,7 @@ async def NY_start():
         await channel.send(embed=ny_messag)
 
 #NY_session end message
-@tasks.loop(minutes=5)
+@tasks.loop(hours=24)
 async def NY_end():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
         print('ny end')
@@ -123,70 +120,53 @@ async def NY_end():
 
 
 
-
 #loops for tasks
 #sydney_start
 @Sydney_start.before_loop
 async def wait():
-    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=0)).replace(hour=21, minute=30, second=00)      #1
+    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).replace(hour=21, minute=30, second=00)      #1
     await discord.utils.sleep_until(sleep_time)
 
 #sydney_end
 @Sydney_end.before_loop
 async def wait():
-    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=0)).replace(hour=5, minute=30, second=0)       #2
+    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).replace(hour=5, minute=30, second=0)       #2
     await discord.utils.sleep_until(sleep_time)
 
 #tokyo_loop starter
 @Tokyo_start.before_loop
 async def wait():
-    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=0)).replace(hour=22, minute=30, second=0)      #7
+    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).replace(hour=22, minute=30, second=0)      #7
     await discord.utils.sleep_until(sleep_time)
 
 #london_start
 @London_start.before_loop
 async def wait():
-    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=0)).replace(hour=6, minute=30, second=0)       #3
+    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).replace(hour=6, minute=30, second=0)       #3
     await discord.utils.sleep_until(sleep_time)
 
 #london_end
 @London_end.before_loop
 async def wait():
-    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=0)).replace(hour=14, minute=30, second=0)      #4
+    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).replace(hour=14, minute=30, second=0)      #4
     await discord.utils.sleep_until(sleep_time)
 
 
 #ny_start_loop starter
 @NY_start.before_loop
 async def wait():
-    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=0)).replace(hour=11, minute=30, second=0)      #5
+    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).replace(hour=11, minute=30, second=0)      #5
     await discord.utils.sleep_until(sleep_time)
 
 #ny_end_loop starter
 @NY_end.before_loop
 async def wait():
-    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=0)).replace(hour=19, minute=30, second=0)      #6
+    sleep_time = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).replace(hour=19, minute=30, second=0)      #6
     await discord.utils.sleep_until(sleep_time)
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-bot.run(TOKEN)
+bot.run(os.environ['DISCORD_TOKEN'])
 
 
