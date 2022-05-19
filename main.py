@@ -36,7 +36,6 @@ async def Sydney_start():
 @tasks.loop(hours=24)
 async def Sydney_end():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        print('sydney end')
         channel = bot.get_channel(974719903443603579)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
@@ -50,7 +49,6 @@ async def Sydney_end():
 @tasks.loop(hours=24)
 async def Tokyo_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        print('tokyo start')
         channel = bot.get_channel(974719903443603579)
         epoch = time.time()
         epoch_1 = int(epoch) + (60*30)
@@ -64,7 +62,6 @@ async def Tokyo_start():
 @tasks.loop(hours=24)
 async def London_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        print('london start')
         channel = bot.get_channel(974719903443603579)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
@@ -79,7 +76,6 @@ async def London_start():
 @tasks.loop(hours=24)
 async def London_end():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        print('london end')
         channel = bot.get_channel(974719903443603579)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
@@ -93,7 +89,6 @@ async def London_end():
 @tasks.loop(hours=24)
 async def NY_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        print('ny start')
         channel = bot.get_channel(974719903443603579)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
@@ -107,7 +102,6 @@ async def NY_start():
 @tasks.loop(hours=24)
 async def NY_end():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        print('ny end')
         channel = bot.get_channel(974719903443603579)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
