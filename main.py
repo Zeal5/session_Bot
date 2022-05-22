@@ -19,11 +19,13 @@ async def on_ready():
     Sydney_start.start()
     Sydney_end.start()
  
+chanel = 974719903443603579 #channel id here
+
 #sydney_session start
 @tasks.loop(hours=24)
 async def Sydney_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        channel = bot.get_channel(974719903443603579)
+        channel = bot.get_channel(chanel)
         epoch = time.time()
         epoch_1 = int(epoch) + (60*30)
         ny_message = discord.Embed(title= f' sydney-session is starting  <t:{epoch_1}:R>',color=0x96C3EB)                                              #1 sydney_start
@@ -36,7 +38,7 @@ async def Sydney_start():
 @tasks.loop(hours=24)
 async def Sydney_end():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        channel = bot.get_channel(974719903443603579)
+        channel = bot.get_channel(chanel)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
         ny_message = discord.Embed(title= f' sydney-session is ending  <t:{epoch_1}:R>',color=0xAF38EB)                                              #2 sydney_end
@@ -49,7 +51,7 @@ async def Sydney_end():
 @tasks.loop(hours=24)
 async def Tokyo_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        channel = bot.get_channel(974719903443603579)
+        channel = bot.get_channel(chanel)
         epoch = time.time()
         epoch_1 = int(epoch) + (60*30)
         ny_message = discord.Embed(title= f' Tokyo is starting in <t:{epoch_1}:R>',color=0x96C3EB)                                                    #7    Tokyo_start
@@ -62,7 +64,7 @@ async def Tokyo_start():
 @tasks.loop(hours=24)
 async def London_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        channel = bot.get_channel(974719903443603579)
+        channel = bot.get_channel(chanel)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
         ny_message = discord.Embed(title= f' london-session is starting and Tokyo is ending in  <t:{epoch_1}:R>',color=0x96C3EB)                                             #3 London_start
@@ -76,7 +78,7 @@ async def London_start():
 @tasks.loop(hours=24)
 async def London_end():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        channel = bot.get_channel(974719903443603579)
+        channel = bot.get_channel(chanel)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
         ny_message = discord.Embed(title= f' london-session is ending  <t:{epoch_1}:R>',color=0xAF38EB)                                               #4 London_end
@@ -89,7 +91,7 @@ async def London_end():
 @tasks.loop(hours=24)
 async def NY_start():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        channel = bot.get_channel(974719903443603579)
+        channel = bot.get_channel(chanel)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
         ny_message = discord.Embed(title= f' NY-session is starting  <t:{epoch_1}:R>',color=0x96C3EB)                                                #5 NY_start
@@ -102,7 +104,7 @@ async def NY_start():
 @tasks.loop(hours=24)
 async def NY_end():
     if datetime.datetime.weekday(datetime.datetime.today()) in a:
-        channel = bot.get_channel(974719903443603579)
+        channel = bot.get_channel(chanel)
         epoch = time.time()
         epoch_1 = int(epoch) + (30*60)
         ny_message = discord.Embed(title= f' NY-session is ending  <t:{epoch_1}:R>',color=0xAF38EB)                                                 #6  NY_end
